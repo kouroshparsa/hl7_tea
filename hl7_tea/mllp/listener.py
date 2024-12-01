@@ -58,7 +58,7 @@ class MllpListener:
                     self.send_ack(client_socket, data)
                     logger.info(f"Sent ACK")
 
-            self.handle_data(Message(data))
+                self.handle_data(Message(data))
         
         except Exception as e:
             logger.error(f"Error handling client: {e}")
@@ -67,7 +67,7 @@ class MllpListener:
             client_socket.close()
 
 
-    def start(self, port: int):
+    def start(self, port: int, ack: bool=True):
         """
         Start the TCP listener.
         """
@@ -79,6 +79,6 @@ class MllpListener:
         while True:
             client_socket, addr = server.accept()
             logger.info(f"Connection from {addr}")
-            client_handler = threading.Thread(target=self.__handle_client, args=(client_socket,))
+            client_handler = threading.Thread(target=self.__handle_client, args=(client_socket, ack))
             client_handler.start()
 
