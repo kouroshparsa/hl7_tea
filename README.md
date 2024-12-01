@@ -180,7 +180,6 @@ Below is an example for sending and receiving MLLP messages:
 Example: Sending a message:
 ```python
 from hl7_tea.mllp.sender import send_message
-from hl7_tea import Message
 
 msg_str = """MSH|^~\\&|ADM|RCH|||202403270202||ADT^A03|4425797|P|2.4||||NE
 EVN|A03|202403270202|||UNKNOWN^RUN^MIDNT^^^^^^^^^^U|20240326
@@ -190,7 +189,6 @@ GT1|768||Doe^Jane
 ZFH|CVC|V|F||test1@gmail.com
 ZFH|CVC|C|F||test2@gmail.com,hi^there"""
 
-msg = Message(msg_str)
 send_message(msg_str, 'localhost', 6000)
 ```
 
