@@ -247,7 +247,8 @@ class Message:
         new_msg = Message()
         for path in paths:
             if '-' not in path: # the whole segment:
-                new_msg.segments[path] = copy.deepcopy(self.segments[path])
+                if path in self.segments:
+                    new_msg.segments[path] = copy.deepcopy(self.segments[path])
             else:
                 new_msg.set_field(path, self.get_field(path).value)
         return new_msg

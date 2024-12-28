@@ -9,7 +9,7 @@ https://github.com/kouroshparsa/hl7_tea
 """
 from setuptools import setup, find_packages
 
-version = '1.0.1'
+version = '1.0.2'
 setup(
     name='hl7_tea',
     version=version,

@@ -24,6 +24,7 @@ ZFH|CVC|C|F||test2@gmail.com,hi^there"""
 msg = Message(msg_str)
 
 print(msg.get_field('GT1-3.2'))
+```
 
 ```shell
 Jane
