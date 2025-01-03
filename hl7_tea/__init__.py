@@ -148,6 +148,9 @@ class Message:
         self.__validate_path(path)
         sp = SegmentPath(path)
         
+        if sp.seg_name not in self.segments:
+            return []
+        
         res = []
         if sp.subfield is None:
             for fields in self.segments[sp.seg_name]:
@@ -169,6 +172,9 @@ class Message:
         self.__validate_path(path)
         sp = SegmentPath(path)
 
+        if sp.seg_name not in self.segments:
+            return []
+        
         res = []
         if sp.subfield is None:
             for fields in self.segments[sp.seg_name]:
@@ -250,7 +256,9 @@ class Message:
                 if path in self.segments:
                     new_msg.segments[path] = copy.deepcopy(self.segments[path])
             else:
-                new_msg.set_field(path, self.get_field(path).value)
+                field = self.get_field(path)
+                if field is not None:
+                    new_msg.set_field(path, field.value)
         return new_msg
 
 
